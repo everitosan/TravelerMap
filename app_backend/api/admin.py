@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import GeoPoint, Itinerary, Note
 
-# Register your models here.
+admin.site.register(GeoPoint)
+admin.site.register(Itinerary)
+admin.site.register(Note)
