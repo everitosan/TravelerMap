@@ -1,0 +1,56 @@
+[
+  {
+    "model": "api.Itinerary",
+    "pk": 1,
+    "fields": {
+      "name": "Viaje familiar a Perú"
+    }
+  },
+  {
+    "model": "api.Itinerary",
+    "pk": 2,
+    "fields": {
+      "name": "Viaje a Chiapas"
+    }
+  },
+  {
+    "model": "api.Itinerary",
+    "pk": 3,
+    "fields": {
+      "name": "Viaje familiar a Europa"
+    }
+  },
+  {
+    "model": "api.Geopoint",
+    "pk": 1,
+    "fields": {
+      "place": "Lima, Perú",
+      "activity": "Llegamos a Lima",
+      "dateTime": "2017-09-04T06:00:00Z",
+      "coords": "41.368927, 2.157792",
+      "itinerary": 1
+    }
+  },
+  {
+    "model": "api.Geopoint",
+    "pk": 2,
+    "fields": {
+      "place": "Tuxtla",
+      "activity": "Comienza el viaje ex tuxla",
+      "dateTime": "2017-09-04T06:00:00Z",
+      "coords": "41.368927, 2.157792",
+      "itinerary": 2
+    }
+  },
+  {
+    "model": "api.Geopoint",
+    "pk": 3,
+    "fields": {
+      "place": "Alá Madrid",
+      "activity": "Llegada a europa",
+      "dateTime": "2017-09-04T06:00:00Z",
+      "coords": "41.368927, 2.157792",
+      "itinerary": 3
+    }
+  }
+]

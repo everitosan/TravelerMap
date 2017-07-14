@@ -1,0 +1,26 @@
+[
+  {
+    "model": "api.Note",
+    "pk": 1,
+    "fields": {
+      "content": "Buscar transporte a la terminal de autobus para llegar a Arequipa",
+      "geoPoint": 1
+    }
+  },
+  {
+    "model": "api.Note",
+    "pk": 2,
+    "fields": {
+      "content": "Buscar ransporte para ir directamente a Palenque",
+      "geoPoint": 2
+    }
+  },
+  {
+    "model": "api.Note",
+    "pk": 3,
+    "fields": {
+      "content": "Buscar transporte ir a brucelas",
+      "geoPoint": 3
+    }
+  }
+]
