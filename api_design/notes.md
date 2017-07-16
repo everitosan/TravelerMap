@@ -81,7 +81,7 @@
     }
      ```
 
- - **[PUT] api/v1/deleteNote/:id**  
+ - **[POST] api/v1/note/:id/remove**  
    *Elimina lógicamente una nota*  
 
    **REQUEST**

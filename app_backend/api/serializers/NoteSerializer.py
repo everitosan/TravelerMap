@@ -5,4 +5,4 @@ from api.models.Note import Note
 class NoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Note
-        fields = ('color', 'content')
+        fields = ('id', 'color', 'content', 'deleted')

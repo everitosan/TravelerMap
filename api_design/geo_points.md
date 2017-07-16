@@ -49,7 +49,7 @@
            "color": "#885736",
            "content": "Llevar cámara fotográfica"
          },
-        "Deleted": False
+        "Deleted": false
        ]
      }
      ```
@@ -105,11 +105,11 @@
            "content": "Llevar cámara fotográfica"
          }
        ],
-      "Deleted": False
+      "Deleted": false
      }
      ```
 
- - **[PUT] api/v1/deleteGeoPoint/:id**  
+ - **[POST] api/v1/geoPoint/:id/remove/**  
    *Elimina lógicamente un geo punto*  
 
    **REQUEST**
@@ -131,7 +131,7 @@
            "content": "Llevar cámara fotográfica"
          }
        ],
-      "Deleted": True
+      "Deleted": true
      }
      ```
 
@@ -164,6 +164,30 @@
            "content": "Llevar paraguas"
          }
        ],
-      "Deleted": True
+      "Deleted": true
      }
+     ```  
+
+ - **[GET] api/v1/geoPoint/:id/notes/**  
+   *Consigue las notas no eliminadas*  
+
+   **REQUEST**
+    ```sh
+
+    ```
+
+    **RESPONSE**
+     ```sh
+    [
+      {
+          "id": 3,
+          "color": "#885736",
+          "content": "Buscar transporte ir a brucelas"
+      },
+      {
+          "id": 5,
+          "color": "#885736",
+          "content": "Revisar los precios"
+      }
+    ]
      ```
