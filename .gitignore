@@ -2,3 +2,4 @@ env
 ../../.DS_Store
 ../../../../../*.pyc
 ui
+app_backend/dev.env
