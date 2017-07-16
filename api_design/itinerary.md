@@ -12,6 +12,7 @@
      ```sh
      [{
        "id": 04,
+       "year": "2017",
        "name": "Viaje a Europa 2017",
        "Deleted": False
        },{
@@ -33,6 +34,7 @@
        "id": 04,
        "name": "Viaje a Europa 2017",
        "Deleted": False,
+       "year": "2017",
        "geoPoints": [
        {
          "id": 01,
@@ -61,7 +63,8 @@
    **REQUEST**
     ```sh
     {
-      "name": "Viaje a Europa 2017"
+      "name": "Viaje a Europa 2017",
+      "year": "2017"
     }
     ```
 
@@ -70,6 +73,7 @@
      {
        "id": 04,
        "name": "Viaje a Europa 2017",
+       "year": "2017",
        "Deleted": False
      }
      ```
@@ -82,6 +86,7 @@
     ```sh
     {
       "name": "Viaje a Europa familia 2017"
+      "year": "2017"
     }
     ```
 
@@ -90,11 +95,12 @@
      {
       "id": 04,
       "name": "Viaje a Europa familia 2017",
+      "year": "2017",
       "Deleted": False
      }
      ```
 
- - **[PUT] api/v1/deleteItinerary/:id**  
+ - **[POST] api/v1/itinerary/:id/remove**  
    *Elimina lógicamente una nota*  
 
    **REQUEST**
@@ -107,6 +113,7 @@
      {
       "id": 04,
       "name": "Viaje a Europa familia 2017",
+      "year": "2017",
       "Deleted": True
      }
      ```
@@ -128,6 +135,7 @@
      {
        "id": 04,
        "name": "Viaje a Europa 2017",
+       "year": "2017",
        "Deleted": False,
        "geoPoints": [
        {
@@ -143,4 +151,26 @@
        },{
        ...
      }
+     ```
+
+ - **[GET] api/v1/itinerary/:id/geopoints**  
+   *Consigue los geopoints no eliminados*  
+
+   **REQUEST**
+    ```sh
+    ```
+
+    **RESPONSE**
+     ```sh
+     [
+       {
+           "id": 2,
+           "place": "Tuxtla",
+           "activity": "Comienza el viaje ex tuxla",
+           "dateTime": "2017-09-04T06:00:00Z",
+           "coords": "41.368927, 2.157792"
+       }, {
+         ...
+       }
+     ]
      ```
