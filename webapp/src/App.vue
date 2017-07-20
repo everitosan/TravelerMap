@@ -34,4 +34,14 @@ body
   -moz-osx-font-smoothing: grayscale
   text-align: center
   color: #2c3e50
+.hDivider
+  background: rgba(98,76,158, 0.64)
+  margin: 0 auto
+  height: 1px
+  width: 90%
+.dot
+  bottom: 2px
+  margin-right: 5px
+  position: relative
+  width: 6px
 </style>
