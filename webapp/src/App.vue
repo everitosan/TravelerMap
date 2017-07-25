@@ -26,6 +26,7 @@ export default {
 </script>
 
 <style lang="stylus">
+@import './assets/icomoon/style'
 body
   margin: 0
 #app

@@ -7,17 +7,22 @@
       span.hide(v-show="!minified" @click="toggleHeight") ocultar
 
       h2.title(v-show="isIndex(0)")  Itinerarios
-      h2.title(v-show="isIndex(1)")  {{itineraryName}}
+      h2.title(v-show="isIndex(1)")  {{currentItinerary.name}}
       .hDivider
       ItinerariesList(
         v-show="isIndex(0)"
         v-on:gotToItinerary="gotToItinerary"
+        )
+      ItineraryDetail(
+        v-show="isIndex(1)"
+        :itineraryId="currentItinerary.id"
         )
 </template>
 
 <script>
 import unsplashAPI from '../unsplashApi'
 import ItinerariesList from './ItinerariesList'
+import ItineraryDetail from './ItineraryDetail'
 
 export default {
   name: 'MapManager',
@@ -30,8 +35,7 @@ export default {
     },
     gotToItinerary: function (itineraryInfo) {
       this.index = 1
-      this.itineraryName = itineraryInfo.name
-      console.log(itineraryInfo.id)
+      this.currentItinerary = itineraryInfo
     },
     decreaseeIndex () {
       this.index --
@@ -39,7 +43,7 @@ export default {
   },
   data () {
     return {
-      itineraryName: '',
+      currentItinerary: {},
       index: 0,
       minified: false,
       bgUnsplashImage: {
@@ -54,7 +58,7 @@ export default {
       })
       .catch(err => console.log(err))
   },
-  components: {ItinerariesList}
+  components: {ItinerariesList, ItineraryDetail}
 }
 </script>
 

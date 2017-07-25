@@ -8,6 +8,14 @@ export default {
     })
     .then(res => res.json())
     .catch(err => err)
+  },
+
+  getItineraryGeopoints: function (id) {
+    return fetch(CONFIG.apiUrl + 'itinerary/' + id + '/geopoints', {
+      method: 'get'
+    })
+    .then(res => res.json())
+    .catch(err => err)
   }
 
 }
