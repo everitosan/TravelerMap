@@ -26,7 +26,6 @@ export default {
   margin: 0.1em auto
   cursor: pointer
   transition: all ease 0.3s
-  width: 85%
   .year
     font-size: .5em
     position: relative
