@@ -2,20 +2,22 @@
   #MapManager(:class="{minified: minified}")
     .bgimage(:style="bgUnsplashImage")
     .color
-      span.back(v-show="!isIndex(0)" @click="decreaseeIndex") ←
+      span.back(v-show="!isStep('ITINERARY_LIST')" @click="showIntineraryList") ←
       span.hide(v-show="minified" @click="toggleHeight") ↓
       span.hide(v-show="!minified" @click="toggleHeight") ocultar
 
-      h2.title(v-show="isIndex(0)")  Itinerarios
-      h2.title(v-show="isIndex(1)")  {{currentItinerary.name}}
+      h2.title(v-show="isStep('ITINERARY_LIST')")  Itinerarios
+      h2.title(v-show="isStep('ITINERARY_DETAIL')")  {{currentItinerary.name}}
+      h2.title(v-show="isStep('ADD_ITINERARY')")  Agregar Itinerario
       .hDivider
       ItinerariesList(
-        v-show="isIndex(0)"
-        v-on:gotToItinerary="gotToItinerary"
+        v-show="isStep('ITINERARY_LIST')"
+        )
+      addItinerary(
+        v-show="isStep('ADD_ITINERARY')"
         )
       ItineraryDetail(
-        v-show="isIndex(1)"
-        :itineraryId="currentItinerary.id"
+        v-show="isStep('ITINERARY_DETAIL')"
         )
 </template>
 
@@ -23,22 +25,24 @@
 import unsplashAPI from '../unsplashApi'
 import ItinerariesList from './ItinerariesList'
 import ItineraryDetail from './ItineraryDetail'
+import addItinerary from './addItinerary'
 
 export default {
   name: 'MapManager',
+  computed: {
+    step () {
+      return this.$store.state.step
+    }
+  },
   methods: {
-    isIndex (i) {
-      return this.index === i
+    isStep (stepName) {
+      return this.step === stepName
     },
     toggleHeight: function () {
       this._data.minified = !this._data.minified
     },
-    gotToItinerary: function (itineraryInfo) {
-      this.index = 1
-      this.currentItinerary = itineraryInfo
-    },
-    decreaseeIndex () {
-      this.index --
+    showIntineraryList () {
+      this.$store.commit('showIntineraryList')
     }
   },
   data () {
@@ -58,7 +62,7 @@ export default {
       })
       .catch(err => console.log(err))
   },
-  components: {ItinerariesList, ItineraryDetail}
+  components: {ItinerariesList, ItineraryDetail, addItinerary}
 }
 </script>
 

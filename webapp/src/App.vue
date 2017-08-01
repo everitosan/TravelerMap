@@ -45,4 +45,7 @@ body
   margin-right: 5px
   position: relative
   width: 6px
+.container
+  margin: 0 auto
+  width: 85%
 </style>

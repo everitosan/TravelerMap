@@ -3,9 +3,8 @@
   itinerary(
     v-for="itinerary in itineraries"
     :key="itinerary.id"
-    :itinerary="itinerary"
-    v-on:gotToItinerary="gotToItinerary")
-  span(@click="addItinerary")
+    :itinerary="itinerary")
+  span(@click="showAddItinerary")
     addButton
 </template>
 
@@ -29,11 +28,8 @@ export default {
       .catch(err => console.log(err))
   },
   methods: {
-    gotToItinerary (itineraryInfo) {
-      this.$emit('gotToItinerary', itineraryInfo)
-    },
-    addItinerary () {
-      console.log('show itinerary input')
+    showAddItinerary (ev) {
+      this.$store.commit('showAddItinerary')
     }
   },
   components: {itinerary, addButton}

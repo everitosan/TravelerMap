@@ -23,7 +23,6 @@ import moment from 'moment'
 
 export default {
   name: 'ItineraryDetail',
-  props: ['itineraryId'],
   filters: {
     date (str) {
       return moment(str).format('LLL')
@@ -33,6 +32,11 @@ export default {
     return {
       geopoints: [],
       hover: false
+    }
+  },
+  computed: {
+    itineraryId () {
+      return this.$store.state.currentItinerary
     }
   },
   watch: {
@@ -48,7 +52,7 @@ export default {
       this.hover = false
     },
     getItineraryInfo: function () {
-      if (this.itineraryId === undefined) return false
+      if (this.itineraryId === 0) return false
       travelerApi.itinerary.getItineraryGeopoints(this.itineraryId)
         .then(res => {
           this.geopoints = res
