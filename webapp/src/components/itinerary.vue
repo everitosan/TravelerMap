@@ -15,7 +15,7 @@ export default {
   props: ['itinerary'],
   methods: {
     gotToItinerary (ev) {
-      this.$store.commit('updateCurrentItinerary', { 'itineraryId': this.itinerary.id })
+      this.$store.commit('updateCurrentItinerary', { 'itinerary': this.itinerary })
       this.$store.commit('showIntineraryDetail')
     }
   }

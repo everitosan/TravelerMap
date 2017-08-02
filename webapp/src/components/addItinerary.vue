@@ -1,30 +1,56 @@
 <template lang="pug">
 #addItinerary.container
-  form
+  form(:class="{ 'dirty': dirty}")
     div.input.col-8
-      input(type="text",  required)
+      input(type="text", required, v-model="itineraryInfo.name")
       label Nombre
 
     div.input.col-4
-      input(type="number", max="9999" required)
+      input(type="number", min="2017", max="9999", required, v-model="itineraryInfo.year")
       label Año
+  add-cancel-bar(:cancel="goBack", :accept="accept")
 </template>
 
 <script>
+import AddCancelBar from './AddCancelBar'
+import travelerApi from '../travelerApi'
+
 export default {
-  name: 'addItinerary'
+  name: 'addItinerary',
+  data () {
+    return {
+      dirty: false,
+      itineraryInfo: {}
+    }
+  },
+  methods: {
+    goBack () {
+      this.dirty = false
+      this.$store.commit('showIntineraryList')
+      this.itineraryInfo = {}
+    },
+    accept () {
+      this.dirty = true
+      travelerApi.itinerary.createItinerary(this.itineraryInfo)
+        .then(res => {
+          this.$bus.$emit('add-itinerary-to-list', res)
+          this.goBack()
+        })
+        .catch(error => {
+          alert(error)
+        })
+    }
+  },
+  components: { AddCancelBar }
 }
 </script>
 
 <style lang="stylus" scoped>
+@import '../styles/colors'
+
 #addItinerary
   form
-    display: flex
     padding: 1em 0
-  .col-8
-    flex: .6
-  .col-4
-    flex: .4
   .input
     position: relative;
     height: 45px
@@ -37,7 +63,7 @@ export default {
       font-weight: 100
       transition: all 0.4s ease-in-out
     input
-      width: 90%
+      width: 100%
       background: transparent
       border: none
       border-bottom: 1px solid rgba(255, 255, 255, .71)
@@ -49,6 +75,14 @@ export default {
       &:focus, &:valid
         outline: none
         & ~ label
+          font-size: 8px
+          bottom: 24px
+  .dirty
+    .input
+      input:invalid
+        color: accent-color
+        & ~ label
+          color: accent-color
           font-size: 8px
           bottom: 24px
 </style>

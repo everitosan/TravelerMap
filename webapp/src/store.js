@@ -6,7 +6,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     step: 'ITINERARY_LIST',
-    currentItinerary: 0
+    currentItinerary: {}
   },
   mutations: {
     showIntineraryDetail (state) {
@@ -19,7 +19,7 @@ const store = new Vuex.Store({
       state.step = 'ADD_ITINERARY'
     },
     updateCurrentItinerary (state, payload) {
-      state.currentItinerary = payload.itineraryId
+      state.currentItinerary = payload.itinerary
     }
   }
 })

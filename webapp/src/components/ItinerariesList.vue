@@ -20,6 +20,11 @@ export default {
       itineraries: []
     }
   },
+  created () {
+    this.$bus.$on('add-itinerary-to-list', (itinerary) => {
+      this.itineraries.push(itinerary)
+    })
+  },
   mounted () {
     travelerApi.itinerary.getItineraies()
       .then(json => {

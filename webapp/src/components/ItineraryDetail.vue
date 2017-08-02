@@ -35,12 +35,12 @@ export default {
     }
   },
   computed: {
-    itineraryId () {
+    itinerary () {
       return this.$store.state.currentItinerary
     }
   },
   watch: {
-    itineraryId: function () {
+    itinerary: function () {
       this.getItineraryInfo()
     }
   },
@@ -52,8 +52,8 @@ export default {
       this.hover = false
     },
     getItineraryInfo: function () {
-      if (this.itineraryId === 0) return false
-      travelerApi.itinerary.getItineraryGeopoints(this.itineraryId)
+      if (this.itinerary.id === 0) return false
+      travelerApi.itinerary.getItineraryGeopoints(this.itinerary.id)
         .then(res => {
           this.geopoints = res
         })

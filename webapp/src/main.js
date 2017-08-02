@@ -4,8 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
+import EventBus from './plugins/EventBus'
 
 Vue.config.productionTip = false
+
+Vue.use(EventBus)
 
 /* eslint-disable no-new */
 new Vue({

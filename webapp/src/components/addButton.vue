@@ -1,5 +1,5 @@
 <template lang="pug">
-.addButton
+.addButton.light_button
   span +
   | Agregar
 </template>
@@ -11,14 +11,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.addButton
-  display: inline-block;
-  margin-top: 1em
-  cursor: pointer
-  transition: all ease 0.3s
+.light_button
   span
-    color: #FF0077
     margin-right: 1em
-  &:hover
-    opacity: 0.8
 </style>

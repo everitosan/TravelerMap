@@ -1,8 +1,8 @@
 import CONFIG from './config'
-
+import jsonToForm from './jsonToForm'
 export default {
 
-  getItineraies: function () {
+  getItineraies () {
     return fetch(CONFIG.apiUrl + 'itinerary', {
       method: 'get'
     })
@@ -10,9 +10,18 @@ export default {
     .catch(err => err)
   },
 
-  getItineraryGeopoints: function (id) {
+  getItineraryGeopoints (id) {
     return fetch(CONFIG.apiUrl + 'itinerary/' + id + '/geopoints', {
       method: 'get'
+    })
+    .then(res => res.json())
+    .catch(err => err)
+  },
+
+  createItinerary (info) {
+    return fetch(CONFIG.apiUrl + 'itinerary/', {
+      method: 'post',
+      body: jsonToForm(info)
     })
     .then(res => res.json())
     .catch(err => err)

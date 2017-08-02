@@ -32,6 +32,9 @@ export default {
   computed: {
     step () {
       return this.$store.state.step
+    },
+    currentItinerary () {
+      return this.$store.state.currentItinerary
     }
   },
   methods: {
@@ -47,7 +50,6 @@ export default {
   },
   data () {
     return {
-      currentItinerary: {},
       index: 0,
       minified: false,
       bgUnsplashImage: {
