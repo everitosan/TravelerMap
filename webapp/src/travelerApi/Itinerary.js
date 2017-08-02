@@ -23,8 +23,13 @@ export default {
       method: 'post',
       body: jsonToForm(info)
     })
-    .then(res => res.json())
-    .catch(err => err)
+    .then(res => {
+      if (res.status === 200) {
+        return res.json()
+      } else {
+        throw new Error(res.statusText)
+      }
+    })
   }
 
 }
