@@ -28,5 +28,6 @@ export default {
 .AddCancelBar
   display: block
   display: flex
-  justify-content: space-around
+  justify-content: space-between
+  padding: 0 0.5em
 </style>
