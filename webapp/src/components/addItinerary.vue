@@ -31,6 +31,9 @@ export default {
     },
     accept () {
       this.dirty = true
+      let invalid = this.$el.querySelectorAll('input:invalid')
+      if (invalid.length !== 0) return false
+
       travelerApi.itinerary.createItinerary(this.itineraryInfo)
         .then(res => {
           this.$bus.$emit('add-itinerary-to-list', res)
