@@ -14,11 +14,15 @@
           span.icon-times-rectangle-o
     div(v-show="isGeopintsEmpty()")
       | No existen puntos a visitar en el itinerario
+
+    span(@click="showAddGeoPoint")
+      addButton
   .add
 </template>
 
 <script>
 import travelerApi from '../travelerApi'
+import addButton from './addButton'
 import moment from 'moment'
 
 export default {
@@ -45,12 +49,6 @@ export default {
     }
   },
   methods: {
-    isHover: function () {
-      this.hover = true
-    },
-    isNotHover: function () {
-      this.hover = false
-    },
     getItineraryInfo: function () {
       if (this.itinerary.id === 0) return false
       travelerApi.itinerary.getItineraryGeopoints(this.itinerary.id)
@@ -63,8 +61,12 @@ export default {
     },
     isGeopintsEmpty () {
       return (this.geopoints.length === 0)
+    },
+    showAddGeoPoint () {
+      console.log('click')
     }
-  }
+  },
+  components: {addButton}
 }
 </script>
 
