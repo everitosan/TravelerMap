@@ -6,13 +6,30 @@
 
   .light_button(@click="acceptFn")
     span.icon-check
-    | Aceptar
+    button.light_button Aceptar
 </template>
 
 <script>
 export default {
   name: 'addCancelBar',
-  props: ['cancel', 'accept'],
+  props: {
+    accept: {
+      type: Function,
+      default: function () {
+        return function () {
+
+        }
+      }
+    },
+    cancel: {
+      type: Function,
+      default: function () {
+        return function () {
+
+        }
+      }
+    }
+  },
   methods: {
     cancelFn () {
       this.cancel()
@@ -30,4 +47,6 @@ export default {
   display: flex
   justify-content: space-between
   padding: 0 0.5em
+.light_button
+  margin-top: 0
 </style>

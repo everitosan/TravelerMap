@@ -13,7 +13,7 @@
           span.icon-edit
           span.icon-times-rectangle-o
     div(v-show="isGeopintsEmpty()")
-      | No existen puntos a visitar en el itinerario
+      p No existen puntos a visitar en el itinerario
 
     span(@click="showAddGeoPoint")
       addButton
@@ -37,6 +37,9 @@ export default {
       geopoints: [],
       hover: false
     }
+  },
+  created () {
+    this.$bus.$on('addGeoPointToList', this.addGeoPointToList)
   },
   computed: {
     itinerary () {
@@ -63,7 +66,11 @@ export default {
       return (this.geopoints.length === 0)
     },
     showAddGeoPoint () {
-      console.log('click')
+      this.$store.commit('ShouldShowBottomButtons', false)
+      this.$store.commit('showAddGeoPoint')
+    },
+    addGeoPointToList (geopoint) {
+      this.geopoints.push(geopoint)
     }
   },
   components: {addButton}
@@ -72,9 +79,7 @@ export default {
 
 <style lang="stylus" scoped>
 .list
-  margin: 0.1em auto
   cursor: pointer
-  width: 85%
   .dateTime
     font-size: .5em
     position: relative

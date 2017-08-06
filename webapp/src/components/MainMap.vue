@@ -7,9 +7,12 @@ import MapsTheme from '../googleMapsApi/theme'
 
 export default {
   name: 'MainMap',
+  created () {
+    this.$bus.$on('centerMapTo', this.centerMapTo)
+  },
   mounted () {
     this.map = new window.google.maps.Map(this.$el, this.initialState)
-    this.map.addListener('click', this.handleMapClick)
+    this.map.addListener('dblclick', this.handleMapClick)
   },
   data () {
     return {
@@ -29,13 +32,24 @@ export default {
   methods: {
     handleMapClick (e) {
       if (!this.addMode) return false
-
+      let coords = {
+        'lat': e.latLng.lat(),
+        'lng': e.latLng.lng()
+      }
       let marker = new window.google.maps.Marker({
         position: e.latLng,
-        map: this.map
+        map: this.map,
+        animation: window.google.maps.Animation.DROP
       })
 
       this.markers.push(marker)
+      this.addMode = false
+      this.$bus.$emit('addGeopointStep3', coords)
+    },
+    centerMapTo (location) {
+      this.map.setCenter(location)
+      this.map.setZoom(16)
+      this.addMode = true
     }
   }
 }

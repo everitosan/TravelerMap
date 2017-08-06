@@ -1,13 +1,16 @@
 <template lang="pug">
-#addItinerary.container
+#addItinerary
   form(:class="{ 'dirty': dirty}")
-    div.input.col-8
-      input(type="text", required, v-model="itineraryInfo.name")
-      label Nombre
+    .row
+      .col-xs-8
+        .input
+          input(type="text", required, v-model="itineraryInfo.name")
+          label Nombre
 
-    div.input.col-4
-      input(type="number", min="2017", max="9999", required, v-model="itineraryInfo.year")
-      label Año
+      .col-xs-4
+        .input
+          input(type="number", min="2017", max="9999", required, v-model="itineraryInfo.year")
+          label Año
   add-cancel-bar(:cancel="goBack", :accept="accept")
 </template>
 
@@ -50,6 +53,8 @@ export default {
 
 <style lang="stylus" scoped>
 @import '../styles/colors'
+@import '../styles/flexboxgrid'
+
 
 #addItinerary
   form
@@ -83,6 +88,7 @@ export default {
   .dirty
     .input
       input:invalid
+        border-color: accent-color
         color: accent-color
         & ~ label
           color: accent-color

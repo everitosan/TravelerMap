@@ -46,5 +46,4 @@ export default {
   color: white
   margin: 0.1em auto
   text-align: left
-  width: 85%
 </style>

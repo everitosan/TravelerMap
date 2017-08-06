@@ -30,6 +30,16 @@ export default {
         throw new Error(res.statusText)
       }
     })
+  },
+  addGeoPoint: function (id, geopointData) {
+    return fetch(CONFIG.apiUrl + 'itinerary/' + id + '/addGeoPoint/', {
+      method: 'post',
+      body: jsonToForm(geopointData)
+    })
+    .then(res => {
+      if (res.status !== 200) throw new Error(res.statusText)
+      return res.json()
+    })
   }
 
 }

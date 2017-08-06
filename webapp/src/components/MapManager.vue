@@ -2,23 +2,21 @@
   #MapManager(:class="{minified: minified}")
     .bgimage(:style="bgUnsplashImage")
     .color
-      span.back(v-show="!isStep('ITINERARY_LIST')" @click="showIntineraryList") ←
-      span.hide(v-show="minified" @click="toggleHeight") ↓
+    span.hide(v-show="minified" @click="toggleHeight") ↓
+    .bottom_buttons(v-show="shouldShowBottomButtons")
+      span.back(v-show="!isStep('ITINERARY_LIST') && !minified" @click="showIntineraryList") < regresar
       span.hide(v-show="!minified" @click="toggleHeight") ocultar
-
+    .content
       h2.title(v-show="isStep('ITINERARY_LIST')")  Itinerarios
       h2.title(v-show="isStep('ITINERARY_DETAIL')")  {{currentItinerary.name}}
       h2.title(v-show="isStep('ADD_ITINERARY')")  Agregar Itinerario
+      h2.title(v-show="isStep('ADD_GEOPOINT')")  Agregar Punto
       .hDivider
-      ItinerariesList(
-        v-show="isStep('ITINERARY_LIST')"
-        )
-      addItinerary(
-        v-show="isStep('ADD_ITINERARY')"
-        )
-      ItineraryDetail(
-        v-show="isStep('ITINERARY_DETAIL')"
-        )
+      .container
+        ItinerariesList(v-show="isStep('ITINERARY_LIST')")
+        addItinerary(v-show="isStep('ADD_ITINERARY')")
+        ItineraryDetail(v-show="isStep('ITINERARY_DETAIL')")
+        addGeopoint(v-show="isStep('ADD_GEOPOINT')")
 </template>
 
 <script>
@@ -26,6 +24,7 @@ import unsplashAPI from '../unsplashApi'
 import ItinerariesList from './ItinerariesList'
 import ItineraryDetail from './ItineraryDetail'
 import addItinerary from './addItinerary'
+import addGeopoint from './addGeopoint'
 
 export default {
   name: 'MapManager',
@@ -35,6 +34,9 @@ export default {
     },
     currentItinerary () {
       return this.$store.state.currentItinerary
+    },
+    shouldShowBottomButtons () {
+      return this.$store.state.showBottomButtons
     }
   },
   methods: {
@@ -64,7 +66,7 @@ export default {
       })
       .catch(err => console.log(err))
   },
-  components: {ItinerariesList, ItineraryDetail, addItinerary}
+  components: {ItinerariesList, ItineraryDetail, addItinerary, addGeopoint}
 }
 </script>
 
@@ -75,12 +77,12 @@ export default {
   font-weight: 100
   margin-top: 20px
   margin-left: 20px
-  height: 90%
+  height: 87%
   overflow: hidden
   position: relative
   text-align: left
   transition: all ease .8s
-  width: 320px
+  width: 340px
   -webkit-box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.5);
   -moz-box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.5);
   box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.5);
@@ -92,6 +94,10 @@ export default {
     background-size: cover
     background-position: center
     height: 100%
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
 
   .color
     background-color: rgba(121, 45, 139, 0.56)
@@ -100,20 +106,27 @@ export default {
     top: 0
     left: 0
     width: 100%
-    span.back
-      cursor: pointer
-      position: absolute
-      left: 10px
-      top: 6px
-    span.hide
-      cursor: pointer
-      position: absolute
-      bottom: 0
-      right: 0
-      text-transform: uppercase
-      color: white
-      float: right
-      margin: .5em 1em
+
+  .content
+    position: relative
+
+  span.back
+    cursor: pointer
+    position: absolute
+    text-transform: uppercase
+    left: 0
+    bottom: 0
+    margin: .5em 1em
+  span.hide
+    cursor: pointer
+    position: absolute
+    bottom: 0
+    right: 0
+    text-transform: uppercase
+    color: white
+    float: right
+    margin: .5em 1em
+    z-index: 2
   .title
     font-weight: 100
     margin: 1.1em auto 0.3em auto

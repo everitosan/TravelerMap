@@ -17,7 +17,7 @@ class ItineraryView(viewsets.ModelViewSet):
     def geopoints(self, request, pk=None):
         itinerary = get_object_or_404(Itinerary, pk=pk)
         geopoints_serializer = GeoPointSerializer(
-            itinerary.geoPoints.filter(deleted=False),
+            itinerary.geoPoints.filter(deleted=False).order_by('dateTime'),
             many=True)
         return Response(
             geopoints_serializer.data,

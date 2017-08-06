@@ -6,7 +6,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     step: 'ITINERARY_LIST',
-    currentItinerary: {}
+    currentItinerary: {},
+    showBottomButtons: true
   },
   mutations: {
     showIntineraryDetail (state) {
@@ -18,8 +19,14 @@ const store = new Vuex.Store({
     showAddItinerary (state) {
       state.step = 'ADD_ITINERARY'
     },
+    showAddGeoPoint (state) {
+      state.step = 'ADD_GEOPOINT'
+    },
     updateCurrentItinerary (state, payload) {
       state.currentItinerary = payload.itinerary
+    },
+    ShouldShowBottomButtons (state, flag) {
+      state.showBottomButtons = flag
     }
   }
 })
