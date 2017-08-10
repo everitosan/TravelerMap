@@ -3,21 +3,24 @@
     "model": "api.Itinerary",
     "pk": 1,
     "fields": {
-      "name": "Viaje familiar a Perú"
+      "name": "Viaje familiar a Perú",
+      "year": "2016"
     }
   },
   {
     "model": "api.Itinerary",
     "pk": 2,
     "fields": {
-      "name": "Viaje a Chiapas"
+      "name": "Viaje a Chiapas",
+      "year": "2017"
     }
   },
   {
     "model": "api.Itinerary",
     "pk": 3,
     "fields": {
-      "name": "Viaje familiar a Europa"
+      "name": "Viaje familiar a Europa",
+      "year": "2017"
     }
   },
   {

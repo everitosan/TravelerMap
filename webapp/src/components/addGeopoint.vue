@@ -99,11 +99,10 @@ export default {
         .then(res => {
           let ZoneID = res.timeZoneId
           nObject.dateTime = moment.tz(`${nObject.date} ${nObject.time}`, ZoneID).format()
-          console.log(nObject)
           return TravelerApi.itinerary.addGeoPoint(this.itineraryId, nObject)
         })
         .then(res => {
-          // this.goBack()
+          this.goBack()
           this.$bus.$emit('addGeoPointToList', res)
         })
         .catch(err => {
