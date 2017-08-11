@@ -1,6 +1,6 @@
 env
 ../../.DS_Store
-../../../../../*.pyc
+*.pyc
 ui
 app_backend/dev.env
 app_backend/db.sqlite3
