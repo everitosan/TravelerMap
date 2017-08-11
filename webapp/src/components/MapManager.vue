@@ -47,6 +47,7 @@ export default {
       this._data.minified = !this._data.minified
     },
     showIntineraryList () {
+      this.$bus.$emit('cleanMarkers')
       this.$store.commit('showIntineraryList')
     }
   },

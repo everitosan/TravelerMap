@@ -1,8 +1,8 @@
 env
 ../../.DS_Store
 *.pyc
+*.sqlite3
 ui
 app_backend/dev.env
-app_backend/db.sqlite3
 app_backend/lib
 app_backend/static

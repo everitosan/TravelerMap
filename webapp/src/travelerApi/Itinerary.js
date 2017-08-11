@@ -24,7 +24,7 @@ export default {
       body: jsonToForm(info)
     })
     .then(res => {
-      if (res.status === 200) {
+      if (res.status === 201) {
         return res.json()
       } else {
         throw new Error(res.statusText)
@@ -37,7 +37,7 @@ export default {
       body: jsonToForm(geopointData)
     })
     .then(res => {
-      if (res.status !== 200) throw new Error(res.statusText)
+      if (res.status !== 201) throw new Error(res.statusText)
       return res.json()
     })
   }

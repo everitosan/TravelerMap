@@ -47,7 +47,7 @@ class ItineraryView(viewsets.ModelViewSet):
                 geopoint_seralizer.save()
                 return Response(
                     geopoint_seralizer.data,
-                    status=status.HTTP_200_OK,
+                    status=status.HTTP_201_CREATED,
                     content_type="application/json"
                 )
             else:

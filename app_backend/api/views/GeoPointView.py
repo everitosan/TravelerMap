@@ -45,7 +45,7 @@ class GeoPointView(viewsets.ModelViewSet):
                 note_serializer.save()
                 return Response(
                     note_serializer.data,
-                    status=status.HTTP_200_OK,
+                    status=status.HTTP_201_CREATED,
                     content_type="application/json")
             else:
                 return Response(

@@ -2,16 +2,8 @@
 #itinerary-detail
   .list
     div(class="geopoint" v-for="geopoint in geopoints")
-      span.dateTime {{geopoint.dateTime | date }}
-      div
-        img(
-          :src="require('../assets/dot.svg')"
-          class="dot"
-        )
-        span {{geopoint.activity}}
-        span.buttons
-          span.icon-edit
-          span.icon-times-rectangle-o
+      GeoPoint(:geopoint="geopoint")
+
     div(v-show="isGeopintsEmpty()")
       p No existen puntos a visitar en el itinerario
 
@@ -23,15 +15,11 @@
 <script>
 import travelerApi from '../travelerApi'
 import addButton from './addButton'
-import moment from 'moment'
+import GeoPoint from './GeoPoint'
 
 export default {
   name: 'ItineraryDetail',
-  filters: {
-    date (str) {
-      return moment(str).format('LLL')
-    }
-  },
+
   data () {
     return {
       geopoints: [],
@@ -49,6 +37,9 @@ export default {
   watch: {
     itinerary: function () {
       this.getItineraryInfo()
+    },
+    geopoints: function () {
+      this.$bus.$emit('addMarkers', this.geopoints)
     }
   },
   methods: {
@@ -73,32 +64,11 @@ export default {
       this.geopoints.push(geopoint)
     }
   },
-  components: {addButton}
+  components: {addButton, GeoPoint}
 }
 </script>
 
 <style lang="stylus" scoped>
 .list
   cursor: pointer
-  .dateTime
-    font-size: .5em
-    position: relative
-    left: 13px
-    top: 3px
-  .geopoint
-    transition: all ease 0.3s
-    opacity: 1
-    .buttons
-      float: right
-      display: none
-      span
-        opacity: 0.5
-        margin-left: 1em
-        &:hover
-          opacity: 1
-    &:hover
-      opacity: 0.8
-    &:hover .buttons
-      display: block
-
 </style>

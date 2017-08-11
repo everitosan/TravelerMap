@@ -31,6 +31,7 @@ export default {
       this.dirty = false
       this.$store.commit('showIntineraryList')
       this.itineraryInfo = {}
+      this.$store.commit('ShouldShowBottomButtons', true)
     },
     accept () {
       this.dirty = true

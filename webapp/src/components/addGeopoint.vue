@@ -114,6 +114,7 @@ export default {
       this.step = 0
       this.$store.commit('showIntineraryDetail')
       this.$store.commit('ShouldShowBottomButtons', true)
+      this.$bus.$emit('removeAuxMarker')
     }
   },
   components: {customForm, AddCancelBar}

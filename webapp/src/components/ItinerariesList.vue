@@ -3,7 +3,10 @@
   itinerary(
     v-for="itinerary in itineraries"
     :key="itinerary.id"
+    v-show="!isEmpty()"
     :itinerary="itinerary")
+  div(v-show="isEmpty()")
+    p No existen itinerarios, comienza tu aventura.
   span(@click="showAddItinerary")
     addButton
 </template>
@@ -35,6 +38,10 @@ export default {
   methods: {
     showAddItinerary (ev) {
       this.$store.commit('showAddItinerary')
+      this.$store.commit('ShouldShowBottomButtons', false)
+    },
+    isEmpty () {
+      return this.itineraries.length === 0
     }
   },
   components: {itinerary, addButton}
