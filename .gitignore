@@ -6,3 +6,4 @@ ui
 app_backend/dev.env
 app_backend/lib
 app_backend/static
+app_backend/frontapp

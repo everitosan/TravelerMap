@@ -4,4 +4,4 @@ env
 ui
 db.sqlite3
 lib
-static
+./static
