@@ -39,7 +39,7 @@ export default {
       this.getItineraryInfo()
     },
     geopoints: function () {
-      this.$bus.$emit('addMarkers', this.geopoints)
+      this.$bus.$emit('updateMap', this.geopoints)
     }
   },
   methods: {

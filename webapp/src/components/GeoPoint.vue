@@ -1,12 +1,12 @@
 <template lang="pug">
-.GeoPoint(v-if="!deleted" @click="goToGeoPoint")
+.GeoPoint(v-if="!deleted")
   span.dateTime {{geopoint.dateTime | date }}
   div
     img(
       :src="require('../assets/dot.svg')"
       class="dot"
     )
-    span {{geopoint.activity}}
+    span(@click="goToGeoPoint") {{geopoint.activity}}
     span.buttons
       span.icon-edit
       span.icon-times-rectangle-o(@click="removeGeoPoint")

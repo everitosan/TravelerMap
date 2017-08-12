@@ -10,19 +10,21 @@ export default {
   created () {
     this.$bus.$on('goToGeoPoint', this.goToGeoPoint)
     this.$bus.$on('centerMapTo', this.centerMapTo)
-    this.$bus.$on('addMarkers', this.addMarkers)
+    this.$bus.$on('updateMap', this.updateMap)
     this.$bus.$on('removeAuxMarker', this.removeAuxMarker)
-    this.$bus.$on('cleanMarkers', this.cleanMarkers)
+    this.$bus.$on('cleanMap', this.cleanMap)
   },
   mounted () {
     this.map = new window.google.maps.Map(this.$el, this.initialState)
     this.map.addListener('dblclick', this.handleMapClick)
+    this.resetPolyLine()
   },
   data () {
     return {
       addMode: false,
       map: {},
-      auxMarker: [],
+      Polyline: undefined,
+      auxMarker: {},
       markers: [],
       initialState: {
         center: {
@@ -31,12 +33,18 @@ export default {
         },
         zoom: 3,
         styles: MapsTheme
+      },
+      polylineConfig: {
+        strokeColor: '#483553',
+        strokeOpacity: 0.6,
+        strokeWidth: 2,
+        map: this.map
       }
     }
   },
   methods: {
     removeAuxMarker () {
-      this.auxMarker[0].setMap(null)
+      this.auxMarker.setMap(null)
     },
     handleMapClick (e) {
       if (!this.addMode) return false
@@ -50,14 +58,30 @@ export default {
       }
 
       let marker = this.createMarker(coords)
-      this.auxMarker.push(marker)
+      this.auxMarker = marker
       this.addMode = false
       this.$bus.$emit('addGeopointStep3', coords)
+    },
+    resetPolyLine () {
+      if (this.Polyline !== undefined) {
+        this.Polyline.setMap(null)
+      }
+      this.Polyline = new window.google.maps.Polyline(this.polylineConfig)
+      this.Polyline.setMap(this.map)
+    },
+    cleanMap () {
+      this.resetPolyLine()
+      this.cleanMarkers()
+      this.zoomOutMap()
     },
     centerMapTo (location) {
       this.map.setCenter(location)
       this.map.setZoom(16)
       this.addMode = true
+    },
+    zoomOutMap () {
+      this.map.setZoom(3)
+      this.map.setCenter(this.initialState.center)
     },
     goToGeoPoint (coords) {
       let Latlng = {
@@ -67,7 +91,9 @@ export default {
       this.map.setCenter(Latlng)
       this.map.setZoom(16)
     },
-    addMarkers (geopoints) {
+    updateMap (geopoints) {
+      this.cleanMarkers()
+      this.resetPolyLine()
       geopoints.forEach((geopoint, index) => {
         let Latlng = {
           lat: parseFloat(geopoint.coords.split(',')[0]),
@@ -75,6 +101,8 @@ export default {
         }
 
         let marker = this.createMarker(Latlng)
+        let latLng = new window.google.maps.LatLng(Latlng.lat, Latlng.lng)
+        this.createLine(latLng)
 
         if (index === 0) {
           this.centerMapTo(Latlng)
@@ -89,8 +117,6 @@ export default {
         marker.setMap(null)
       })
       this.markers = []
-      this.map.setZoom(3)
-      this.map.setCenter(this.initialState.center)
     },
     createMarker (coords) {
       return new window.google.maps.Marker({
@@ -98,6 +124,10 @@ export default {
         map: this.map,
         animation: window.google.maps.Animation.DROP
       })
+    },
+    createLine (coords) {
+      let path = this.Polyline.getPath()
+      path.push(coords)
     }
   }
 }
