@@ -62,6 +62,18 @@ export default {
     },
     addGeoPointToList (geopoint) {
       this.geopoints.push(geopoint)
+      this.orderGepoints()
+    },
+    orderGepoints () {
+      this.geopoints = this.geopoints.sort((a, b) => {
+        if (a.dateTime > b.dateTime) {
+          return 1
+        } else if (a.dateTime < b.dateTime) {
+          return -1
+        } else {
+          return 0
+        }
+      })
     }
   },
   components: {addButton, GeoPoint}
