@@ -83,7 +83,7 @@ export default {
           this.stepAdd()
         })
         .catch(err => {
-          alert(err)
+          this.$bus.$emit('showErrorAlert', {message: err.message})
         })
     },
     getMarkerCoords (location) {
@@ -106,7 +106,7 @@ export default {
           this.$bus.$emit('addGeoPointToList', res)
         })
         .catch(err => {
-          alert(err)
+          this.$bus.$emit('showErrorAlert', err)
         })
     },
     goBack () {

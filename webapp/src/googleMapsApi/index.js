@@ -19,5 +19,6 @@ export default {
       method: 'get'
     })
     .then(res => res.json())
+    .catch(err => err)
   }
 }

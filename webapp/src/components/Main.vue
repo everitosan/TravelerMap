@@ -1,5 +1,6 @@
 <template lang="pug">
   #mainMapScreen
+    ErrorAlert
     MainMap
     MapManager
 </template>
@@ -7,9 +8,10 @@
 <script>
 import MainMap from '@/components/MainMap'
 import MapManager from '@/components/MapManager'
+import ErrorAlert from '@/components/ErrorAlert'
 
 export default {
-  components: {MainMap, MapManager}
+  components: {MainMap, MapManager, ErrorAlert}
 }
 </script>
 

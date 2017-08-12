@@ -44,7 +44,7 @@ export default {
           this.goBack()
         })
         .catch(error => {
-          alert(error)
+          this.$bus.$emit('showErrorAlert', error)
         })
     }
   },
