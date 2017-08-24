@@ -27,6 +27,7 @@ export default {
 
 <style lang="stylus">
 @import './assets/icomoon/style'
+@import './assets/worksans/style'
 @import './styles/main'
 
 </style>

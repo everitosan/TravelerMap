@@ -9,6 +9,7 @@
     span(@click="goToGeoPoint") {{geopoint.activity}}
     span.buttons
       span.icon-edit
+      span.icon-note-checked(@click="showNotes")
       span.icon-times-rectangle-o(@click="removeGeoPoint")
 </template>
 
@@ -30,6 +31,9 @@ export default {
     }
   },
   methods: {
+    showNotes (e) {
+      this.$bus.$emit('showNotes', this.geopoint)
+    },
     removeGeoPoint (e) {
       travelerApi.geoPoint.removeGeoPoint(this.geopoint.id)
         .then(res => {
@@ -60,7 +64,7 @@ export default {
     display: none
     span
       opacity: 0.5
-      margin-left: 1em
+      margin-left: 0.5em
       &:hover
         opacity: 1
   &:hover

@@ -87,7 +87,7 @@ export default {
   -webkit-box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.5);
   -moz-box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.5);
   box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.5);
-  z-index: 1
+  z-index: 3
   &.minified
     height: 65px
 
@@ -101,7 +101,7 @@ export default {
     width: 100%
 
   .color
-    background-color: rgba(121, 45, 139, 0.56)
+    background-color: rgba(121, 45, 139, 0.61)
     height: 100%
     position: absolute
     top: 0

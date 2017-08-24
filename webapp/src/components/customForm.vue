@@ -2,7 +2,7 @@
   form(
     novalidate
     :class="{ 'dirty': dirty}"
-    on:submit.prevent="onSubmit"
+    on:submit="onSubmit"
     @submit="validate")
     slot
 </template>

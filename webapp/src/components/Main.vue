@@ -2,16 +2,18 @@
   #mainMapScreen
     ErrorAlert
     MainMap
+    NotesList
     MapManager
 </template>
 
 <script>
 import MainMap from '@/components/MainMap'
 import MapManager from '@/components/MapManager'
+import NotesList from '@/components/NotesList'
 import ErrorAlert from '@/components/ErrorAlert'
 
 export default {
-  components: {MainMap, MapManager, ErrorAlert}
+  components: {MainMap, MapManager, ErrorAlert, NotesList}
 }
 </script>
 
