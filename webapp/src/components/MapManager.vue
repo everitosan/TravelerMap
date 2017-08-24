@@ -7,7 +7,7 @@
       span.back(v-show="!isStep('ITINERARY_LIST') && !minified" @click="showIntineraryList") < regresar
       span.hide(v-show="!minified" @click="toggleHeight") ocultar
     .content
-      h2.title(v-show="isStep('ITINERARY_LIST')")  Itinerarios
+      h2.title(v-show="isStep('ITINERARY_LIST')")  Mis Viajes
       h2.title(v-show="isStep('ITINERARY_DETAIL')")  {{currentItinerary.name}}
       h2.title(v-show="isStep('ADD_ITINERARY')")  Agregar Itinerario
       h2.title(v-show="isStep('ADD_GEOPOINT')")  Agregar Punto
