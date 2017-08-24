@@ -69,7 +69,7 @@ export default {
         this.showNewInput = false
       })
       .catch(err => {
-        console.log(err)
+        this.$bus.$emit('showErrorAlert', {message: err.message})
       })
     },
     toggleNotes () {
@@ -97,9 +97,11 @@ export default {
     left: 20px
     padding: 0 1em
     width: 300px
-    transition: left ease .3s
+    transition: all ease .3s
+    opacity: 0
     &.active
       box-shadow: 0 0 5px 2px #b9b9b9
+      opacity: 1
       left: 360px
     .header
       padding-top: 8px
