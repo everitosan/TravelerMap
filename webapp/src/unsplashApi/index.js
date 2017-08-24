@@ -2,7 +2,7 @@ import CONFIG from './config'
 
 export default {
   getBackgroundPhoto: function () {
-    return fetch(CONFIG.URL + 'photos/random?query=camping&&orientation=landscape', {
+    return fetch(CONFIG.URL + 'photos/random?query=landscape&&orientation=landscape', {
       method: 'GET',
       headers: new Headers({
         'Authorization': 'Client-ID ' + CONFIG.Application_ID
