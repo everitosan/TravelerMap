@@ -61,6 +61,7 @@ export default {
 
 <style lang="stylus" scoped>
 @import '../styles/colors'
+@import "../styles/measures"
 
 .bounce-enter-active
   animation: bounce-in .4s
@@ -113,4 +114,8 @@ export default {
       span
         cursor: pointer
         color: accent-color
+@media screen and (max-width: $md-up)
+  .ErrorBg
+    .popUp
+      max-width: 90%
 </style>

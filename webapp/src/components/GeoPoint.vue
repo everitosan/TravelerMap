@@ -61,6 +61,8 @@ export default {
 
 <style lang="stylus">
 @import '../styles/colors'
+@import '../styles/measures'
+
 .GeoPoint
   transition: all ease 0.3s
   opacity: 1
@@ -94,4 +96,8 @@ export default {
     opacity: 0.8
   &:hover .buttons
     display: block
+@media screen and (max-width: $md-up)
+  .GeoPoint
+    .buttons
+      display: block
 </style>

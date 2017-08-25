@@ -72,6 +72,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import "../styles/measures"
+
 #MapManager
   border-radius: 10px
   color: white
@@ -132,5 +134,9 @@ export default {
     font-weight: 100
     margin: 1.1em auto 0.3em auto
     text-transform: uppercase
+    width: 90%
+
+@media screen and (max-width: $md-up)
+  #MapManager
     width: 90%
 </style>
