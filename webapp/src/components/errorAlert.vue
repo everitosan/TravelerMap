@@ -3,11 +3,14 @@ transition(name="fadeBox")
   .ErrorBg(v-show="shouldShow")
     transition(name="bounce")
       .popUp(v-show="shouldShow")
-        h3.title {{title}}
+        h3.title {{content.title}}
         .Message
-          p {{message}}
-        .footer
+          p {{content.message}}
+        .footer(v-show="isType('alert')")
           span.dismiss(@click="dismiss") Aceptar
+        .footer.confirm(v-show="isType('confirm')")
+          span.dismiss(@click="dismiss") Cancelar
+          span.dismiss(@click="callback") Aceptar
 </template>
 
 <script>
@@ -15,22 +18,42 @@ export default {
   name: 'ErrorAlert',
   data () {
     return {
+      type: 'alert',
       shouldShow: false,
-      title: 'Error !',
-      message: 'There was a problem ...'
+      default: {
+        title: 'Error !',
+        message: 'There was a problem ...'
+      },
+      content: {},
+      customCallback: {}
     }
   },
   created () {
     this.$bus.$on('showErrorAlert', this.showErrorAlert)
+    this.$bus.$on('showErrorConfirm', this.showConfirmAlert)
   },
   methods: {
+    isType (type) {
+      return this.type === type
+    },
     showErrorAlert (errorInfo = {title: 'Error'}) {
-      this.title = errorInfo.title || this.title
-      this.message = errorInfo.message
+      this.type = 'alert'
+      this.content.title = errorInfo.title || this.default.title
+      this.content.message = errorInfo.message
       this.shouldShow = true
     },
     dismiss () {
       this.shouldShow = false
+    },
+    showConfirmAlert (info, callback) {
+      this.type = 'confirm'
+      this.customCallback = callback
+      this.content = info
+      this.shouldShow = true
+    },
+    callback () {
+      this.customCallback()
+      this.dismiss()
     }
   }
 }
@@ -84,6 +107,9 @@ export default {
       margin: 0
     .footer
       text-align: right
+      &.confirm
+        display: flex
+        justify-content: space-around
       span
         cursor: pointer
         color: accent-color

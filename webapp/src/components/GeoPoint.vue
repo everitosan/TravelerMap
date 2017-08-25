@@ -1,16 +1,16 @@
 <template lang="pug">
 .GeoPoint(v-if="!deleted")
   span.dateTime {{geopoint.dateTime | date }}
-  div
+  .geopoint-container
     img(
       :src="require('../assets/dot.svg')"
       class="dot"
     )
-    span(@click="goToGeoPoint") {{geopoint.activity}}
+    .geopoint-activity(@click="goToGeoPoint") {{geopoint.activity}}
     span.buttons
-      span.icon-edit
-      span.icon-note-checked(@click="showNotes")
-      span.icon-times-rectangle-o(@click="removeGeoPoint")
+      span.icon-document-edit-dark
+      span.icon-note-checked-dark(@click="showNotes")
+      span.delete.icon-trash-dark(@click="confirm")
 </template>
 
 <script>
@@ -34,7 +34,16 @@ export default {
     showNotes (e) {
       this.$bus.$emit('showNotes', this.geopoint)
     },
-    removeGeoPoint (e) {
+    confirm (e) {
+      this.$bus.$emit(
+        'showErrorConfirm', {
+          title: 'Eliminar !',
+          message: `Estas seguro que deas eliminar "${this.geopoint.activity}" de la lista ?`
+        },
+        this.removeGeoPoint
+      )
+    },
+    removeGeoPoint () {
       travelerApi.geoPoint.removeGeoPoint(this.geopoint.id)
         .then(res => {
           this.deleted = true
@@ -51,22 +60,36 @@ export default {
 </script>
 
 <style lang="stylus">
+@import '../styles/colors'
 .GeoPoint
   transition: all ease 0.3s
   opacity: 1
+  .geopoint-container
+    position: relative
+    .dot
+      position: absolute
+      top: 8px
+  .geopoint-activity
+    position: relative
+    left: 10px
+    width: 70%
   .dateTime
     font-size: .5em
     position: relative
     left: 13px
     top: 3px
   .buttons
-    float: right
+    position: absolute
+    top: 2px
+    right: 0
     display: none
     span
       opacity: 0.5
       margin-left: 0.5em
       &:hover
         opacity: 1
+      &.delete:hover
+        color: accent-color
   &:hover
     opacity: 0.8
   &:hover .buttons

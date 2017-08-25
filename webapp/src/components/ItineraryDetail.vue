@@ -50,7 +50,7 @@ export default {
           this.geopoints = res
         })
         .catch(err => {
-          console.log(err)
+          this.$bus.$emit('showErrorAlert', {message: err.message})
         })
     },
     isGeopintsEmpty () {
