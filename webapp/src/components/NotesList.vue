@@ -172,6 +172,8 @@ export default {
 @media screen and (max-width: $md-up)
   .NotesList
     left: -110%
+    opacity: 1
+    top: 10px
     height: 87%
     width: 86%
     &.active

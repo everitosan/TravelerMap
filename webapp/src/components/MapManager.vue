@@ -112,7 +112,10 @@ export default {
 
   .content
     position: relative
-
+    height: 100%
+    .container
+      height: 80%
+      overflow-y: scroll
   span.back
     cursor: pointer
     position: absolute
@@ -138,7 +141,7 @@ export default {
 
 @media screen and (max-width: $md-up)
   #MapManager
-    margin-top: 10%
+    margin-top: 10px
     width: 90%
     margin-left: 5%
 </style>
