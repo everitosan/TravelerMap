@@ -38,6 +38,160 @@
     "model": "api.Geopoint",
     "pk": 2,
     "fields": {
+      "place": "Lima, Perú",
+      "activity": "Llegamos a Lima",
+      "dateTime": "2017-09-04T06:00:00Z",
+      "coords": "41.368927, 2.157792",
+      "itinerary": 1
+    }
+  },
+  {
+    "model": "api.Geopoint",
+    "pk": 3,
+    "fields": {
+      "place": "Lima, Perú",
+      "activity": "Llegamos a Lima",
+      "dateTime": "2017-09-04T06:00:00Z",
+      "coords": "41.368927, 2.157792",
+      "itinerary": 1
+    }
+  },
+  {
+    "model": "api.Geopoint",
+    "pk": 4,
+    "fields": {
+      "place": "Lima, Perú",
+      "activity": "Llegamos a Lima",
+      "dateTime": "2017-09-04T06:00:00Z",
+      "coords": "41.368927, 2.157792",
+      "itinerary": 1
+    }
+  },
+  {
+    "model": "api.Geopoint",
+    "pk": 5,
+    "fields": {
+      "place": "Lima, Perú",
+      "activity": "Llegamos a Lima",
+      "dateTime": "2017-09-04T06:00:00Z",
+      "coords": "41.368927, 2.157792",
+      "itinerary": 1
+    }
+  },
+  {
+    "model": "api.Geopoint",
+    "pk": 6,
+    "fields": {
+      "place": "Lima, Perú",
+      "activity": "Llegamos a Lima",
+      "dateTime": "2017-09-04T06:00:00Z",
+      "coords": "41.368927, 2.157792",
+      "itinerary": 1
+    }
+  },
+  {
+    "model": "api.Geopoint",
+    "pk": 7,
+    "fields": {
+      "place": "Lima, Perú",
+      "activity": "Llegamos a Lima",
+      "dateTime": "2017-09-04T06:00:00Z",
+      "coords": "41.368927, 2.157792",
+      "itinerary": 1
+    }
+  },
+  {
+    "model": "api.Geopoint",
+    "pk": 8,
+    "fields": {
+      "place": "Lima, Perú",
+      "activity": "Llegamos a Lima",
+      "dateTime": "2017-09-04T06:00:00Z",
+      "coords": "41.368927, 2.157792",
+      "itinerary": 1
+    }
+  },
+  {
+    "model": "api.Geopoint",
+    "pk": 9,
+    "fields": {
+      "place": "Lima, Perú",
+      "activity": "Llegamos a Lima",
+      "dateTime": "2017-09-04T06:00:00Z",
+      "coords": "41.368927, 2.157792",
+      "itinerary": 1
+    }
+  },
+  {
+    "model": "api.Geopoint",
+    "pk": 10,
+    "fields": {
+      "place": "Lima, Perú",
+      "activity": "Llegamos a Lima",
+      "dateTime": "2017-09-04T06:00:00Z",
+      "coords": "41.368927, 2.157792",
+      "itinerary": 1
+    }
+  },
+  {
+    "model": "api.Geopoint",
+    "pk": 11,
+    "fields": {
+      "place": "Lima, Perú",
+      "activity": "Llegamos a Lima",
+      "dateTime": "2017-09-04T06:00:00Z",
+      "coords": "41.368927, 2.157792",
+      "itinerary": 1
+    }
+  },
+  {
+    "model": "api.Geopoint",
+    "pk": 12,
+    "fields": {
+      "place": "Lima, Perú",
+      "activity": "Llegamos a Lima",
+      "dateTime": "2017-09-04T06:00:00Z",
+      "coords": "41.368927, 2.157792",
+      "itinerary": 1
+    }
+  },
+  {
+    "model": "api.Geopoint",
+    "pk": 13,
+    "fields": {
+      "place": "Lima, Perú",
+      "activity": "Llegamos a Lima",
+      "dateTime": "2017-09-04T06:00:00Z",
+      "coords": "41.368927, 2.157792",
+      "itinerary": 1
+    }
+  },
+  {
+    "model": "api.Geopoint",
+    "pk": 14,
+    "fields": {
+      "place": "Lima, Perú",
+      "activity": "Llegamos a Lima",
+      "dateTime": "2017-09-04T06:00:00Z",
+      "coords": "41.368927, 2.157792",
+      "itinerary": 1
+    }
+  },
+  {
+    "model": "api.Geopoint",
+    "pk": 15,
+    "fields": {
+      "place": "Lima, Perú",
+      "activity": "Llegamos a Lima",
+      "dateTime": "2017-09-04T06:00:00Z",
+      "coords": "41.368927, 2.157792",
+      "itinerary": 1
+    }
+  },
+  {
+    "model": "api.Geopoint",
+    "pk": 2,
+    "fields": {
       "place": "Tuxtla",
       "activity": "Comienza el viaje ex tuxla",
       "dateTime": "2017-09-04T06:00:00Z",
