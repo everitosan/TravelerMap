@@ -6,7 +6,7 @@
     .bottom_buttons(v-show="shouldShowBottomButtons")
       span.back(v-show="!isStep('ITINERARY_LIST') && !minified" @click="showIntineraryList") < regresar
       span.hide(v-show="!minified" @click="toggleHeight") ocultar
-    .content
+    .content(:style="{height: containerHeight }")
       h2.title(v-show="isStep('ITINERARY_LIST')")  Mis Viajes
       h2.title(v-show="isStep('ITINERARY_DETAIL')")  {{currentItinerary.name}}
       h2.title(v-show="isStep('ADD_ITINERARY')")  Agregar Itinerario
@@ -37,6 +37,13 @@ export default {
     },
     shouldShowBottomButtons () {
       return this.$store.state.showBottomButtons
+    },
+    containerHeight () {
+      if (this.isStep('ITINERARY_DETAIL')) {
+        return window.innerHeight + 'px'
+      } else {
+        return 'auto'
+      }
     }
   },
   methods: {
@@ -113,11 +120,11 @@ export default {
 
   .content
     position: relative
-    height: 100%
+    overflow: hidden
     .container
-      margin-bottom: 3em
-      height: 80%
-      overflow-y: scroll
+      padding-bottom: 1em
+      height: 70%
+      overflow: scroll
   span.back
     cursor: pointer
     position: absolute
@@ -149,5 +156,5 @@ export default {
     margin-left: 5%
     .content
       .container
-        max-height: 450px
+        height: 63%
 </style>
