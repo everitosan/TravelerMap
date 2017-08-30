@@ -80,7 +80,8 @@ export default {
   font-weight: 100
   margin-top: 20px
   margin-left: 20px
-  height: 87%
+  height: auto
+  max-height: 87%
   overflow: hidden
   position: relative
   text-align: left
@@ -114,6 +115,7 @@ export default {
     position: relative
     height: 100%
     .container
+      margin-bottom: 3em
       height: 80%
       overflow-y: scroll
   span.back
@@ -123,6 +125,7 @@ export default {
     left: 0
     bottom: 0
     margin: .5em 1em
+    z-index: 2
   span.hide
     cursor: pointer
     position: absolute
@@ -141,7 +144,10 @@ export default {
 
 @media screen and (max-width: $md-up)
   #MapManager
-    margin-top: 10px
+    margin-top: 3px
     width: 90%
     margin-left: 5%
+    .content
+      .container
+        max-height: 450px
 </style>

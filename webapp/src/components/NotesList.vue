@@ -93,16 +93,19 @@ export default {
   position: absolute
   z-index: 2
   top: 44px
-  height: 80%
+  height: 0
+  max-height: 80%
   text-align: left
   left: 20px
   padding: 0 1em
   width: 300px
-  transition: all ease .3s
   opacity: 0
+  overflow: hidden;
+  transition: all ease .3s
   &.active
     box-shadow: 0 0 5px 2px #b9b9b9
     opacity: 1
+    height: auto
     left: 360px
   .header
     padding-top: 8px
@@ -171,13 +174,14 @@ export default {
     padding: 0.4em 0
 @media screen and (max-width: $md-up)
   .NotesList
+    border-radius: 10px
     left: -110%
     opacity: 1
     top: 10px
-    height: 87%
-    width: 86%
+    width: 81%
     &.active
+      height: 90%
       top: 20px
-      left: 0
+      left: 5%
       z-index: 4
 </style>

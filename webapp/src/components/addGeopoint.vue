@@ -6,10 +6,11 @@
         .input
           input(type="text" v-model="details.place" required)
           label Dirección
-        input.light_button(type="submit" value="Buscar")
+        AddCancelBar(:cancel="goBack")
     .step2(v-show="isStep(1)")
       p
         | Presiona doble click en el mapa para agregar el marcador en el lugar exacto.
+      span.light_button(@click="goBack") Cancelar
     .step3(v-show="isStep(2)")
       p
         | Agrega los detalles de tu actividad
